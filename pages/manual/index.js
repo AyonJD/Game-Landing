@@ -6,7 +6,7 @@ import { ButtonAnimate } from 'src/components/animate'
 
 const responsiveIframeStyle = {
   position: 'relative',
-  paddingTop: '56.25%', 
+  paddingTop: '56.25%',
   overflow: 'hidden',
   marginLeft: 'auto',
 }
@@ -37,6 +37,11 @@ function Manual() {
 
   const iframeWidth = isSmallScreen ? '100%' : isMediumScreen ? '90%' : '90%'
 
+  const handleDownloadManual = () => {
+    const pdfUrl = '/pdf.pdf'
+    window.open(pdfUrl, '_blank')
+  }
+
   return (
     <>
       <MainNavbar />
@@ -52,7 +57,11 @@ function Manual() {
           }}
         >
           <ButtonAnimate>
-            <Button variant="contained" color="primary">
+            <Button
+              onClick={handleDownloadManual}
+              variant="contained"
+              color="primary"
+            >
               Download Manual
             </Button>
           </ButtonAnimate>
