@@ -1,20 +1,27 @@
 // next
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 // material
-import { styled } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container } from '@mui/material';
+import { styled } from '@mui/material/styles'
+import {
+  Box,
+  Button,
+  AppBar,
+  Toolbar,
+  Container,
+  Typography,
+} from '@mui/material'
 // hooks
-import useOffSetTop from '../../hooks/useOffSetTop';
+import useOffSetTop from '../../hooks/useOffSetTop'
 // components
-import Logo from '../../components/Logo';
-import Label from '../../components/Label';
-import { ButtonAnimate } from '../../../src/components/animate';
+import Logo from '../../components/Logo'
+import Label from '../../components/Label'
+import { ButtonAnimate } from '../../../src/components/animate'
 
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 88;
+const APP_BAR_MOBILE = 64
+const APP_BAR_DESKTOP = 88
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   height: APP_BAR_MOBILE,
@@ -25,7 +32,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     height: APP_BAR_DESKTOP,
   },
-}));
+}))
 
 const ToolbarShadowStyle = styled('div')(({ theme }) => ({
   left: 0,
@@ -38,14 +45,14 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
   position: 'absolute',
   width: `calc(100% - 48px)`,
   boxShadow: theme.customShadows.z8,
-}));
+}))
 
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
-  const isOffset = useOffSetTop(100);
-  const { pathname } = useRouter();
-  const isHome = pathname === '/';
+  const isOffset = useOffSetTop(100)
+  const { pathname } = useRouter()
+  const isHome = pathname === '/'
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
@@ -59,25 +66,34 @@ export default function MainNavbar() {
         }}
       >
         <Container
-          maxWidth='lg'
+          maxWidth="lg"
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <NextLink href='/'>
+          <NextLink href="/">
             <Logo />
           </NextLink>
           <Box sx={{ flexGrow: 1 }} />
-
           <ButtonAnimate>
             <Button
-              variant='contained'
-              color='primary'
-              href='#'
-              target='_blank'
-              rel='noopener noreferrer'
+              variant="outlined"
+              color="primary"
+              href="/manual"
+              sx={{ marginRight: 2 }}
+            >
+              User Manual
+            </Button>
+          </ButtonAnimate>
+          <ButtonAnimate>
+            <Button
+              variant="contained"
+              color="primary"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Download APK
             </Button>
@@ -87,5 +103,5 @@ export default function MainNavbar() {
 
       {isOffset && <ToolbarShadowStyle />}
     </AppBar>
-  );
+  )
 }
