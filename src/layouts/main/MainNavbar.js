@@ -14,9 +14,9 @@ import {
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop'
 // components
-import Logo from '../../components/Logo'
-import Label from '../../components/Label'
 import { ButtonAnimate } from '../../../src/components/animate'
+import dynamic from 'next/dynamic'
+const Logo = dynamic(() => import('../../components/Logo'), { ssr: false })
 
 // ----------------------------------------------------------------------
 

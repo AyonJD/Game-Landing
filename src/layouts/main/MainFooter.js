@@ -17,9 +17,9 @@ import {
   IconButton,
 } from '@mui/material'
 //
-import Logo from '../../components/Logo'
 import dynamic from 'next/dynamic'
 const ScrollLink = dynamic(() => import('react-scroll'), { ssr: false })
+const Logo = dynamic(() => import('../../components/Logo'), { ssr: false })
 
 // ----------------------------------------------------------------------
 

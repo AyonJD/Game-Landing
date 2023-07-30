@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles'
 import Page from '../src/components/Page'
 import { LandingHero } from '../src/components/_external-pages/landing'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 const AccordionComponent = dynamic(
   () => import('../src/components/_external-pages/landing/Accordion'),
   { ssr: false }
@@ -26,6 +27,8 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LandingPage() {
+  
+
   return (
     <MainLayout>
       <RootStyle

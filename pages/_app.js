@@ -19,9 +19,10 @@ import createEmotionCache from '../src/utils/createEmotionCache'
 // components
 import RtlLayout from '../src/components/RtlLayout'
 import ProgressBar from '../src/components/ProgressBar'
-import LoadingScreen from '../src/components/LoadingScreen'
 import ThemePrimaryColor from '../src/components/ThemePrimaryColor'
 import '../styles/global.css'
+import { useEffect, useState } from 'react'
+import CustomLoadingScreen from 'src/components/CustomLoadingScreen'
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +30,27 @@ const clientSideEmotionCache = createEmotionCache()
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadingStartTime, setLoadingStartTime] = useState(0)
+
+  useEffect(() => {
+    setLoadingStartTime(performance.now())
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 5000)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const loadingEndTime = performance.now()
+      const loadingTime = loadingEndTime - loadingStartTime
+      console.log(`Loading time: ${loadingTime} ms`)
+    }
+  }, [isLoading, loadingStartTime])
+
+  if (isLoading) {
+    return <CustomLoadingScreen />
+  }
 
   return (
     <SettingsProvider>
@@ -46,7 +68,6 @@ export default function MyApp(props) {
               <RtlLayout>
                 <GlobalStyles />
                 <ProgressBar />
-                <LoadingScreen />
                 <Component {...pageProps} />
               </RtlLayout>
             </ThemePrimaryColor>

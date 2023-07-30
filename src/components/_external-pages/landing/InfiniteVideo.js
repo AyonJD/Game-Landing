@@ -30,7 +30,6 @@ const InfiniteVideo = () => {
       playsInline
       style={{ width: '100%', height: 'auto' }}
     >
-      <source src="/game.mp4" type="video/mp4" />
       <source src="/game.webm" type="video/webm" />
       Your browser does not support the video tag.
     </video>

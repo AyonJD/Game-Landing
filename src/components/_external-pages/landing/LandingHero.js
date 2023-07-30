@@ -5,17 +5,14 @@ import flashFill from '@iconify/icons-eva/flash-fill'
 import NextLink from 'next/link'
 // material
 import { styled } from '@mui/material/styles'
-import { Box, Link, Stack, Button, Container, Typography } from '@mui/material'
+import { Box, Stack, Button, Container, Typography } from '@mui/material'
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths'
 //
 import {
   varFadeIn,
-  varFadeInUp,
   varWrapEnter,
   varFadeInRight,
 } from '../../animate'
-import Image from 'next/image'
 import InfiniteVideo from './InfiniteVideo'
 
 // ----------------------------------------------------------------------
