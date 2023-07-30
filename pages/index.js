@@ -7,6 +7,7 @@ import Page from '../src/components/Page'
 import { LandingHero } from '../src/components/_external-pages/landing'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
+import CustomLoadingScreen from 'src/components/CustomLoadingScreen'
 const AccordionComponent = dynamic(
   () => import('../src/components/_external-pages/landing/Accordion'),
   { ssr: false }
@@ -27,7 +28,27 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LandingPage() {
-  
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadingStartTime, setLoadingStartTime] = useState(0)
+
+  useEffect(() => {
+    setLoadingStartTime(performance.now())
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const loadingEndTime = performance.now()
+      const loadingTime = loadingEndTime - loadingStartTime
+      console.log(`Loading time: ${loadingTime} ms`)
+    }
+  }, [isLoading, loadingStartTime])
+
+  if (isLoading) {
+    return <CustomLoadingScreen />
+  }
 
   return (
     <MainLayout>

@@ -30,27 +30,6 @@ const clientSideEmotionCache = createEmotionCache()
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
-  const [isLoading, setIsLoading] = useState(true)
-  const [loadingStartTime, setLoadingStartTime] = useState(0)
-
-  useEffect(() => {
-    setLoadingStartTime(performance.now())
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 5000)
-  }, [])
-
-  useEffect(() => {
-    if (!isLoading) {
-      const loadingEndTime = performance.now()
-      const loadingTime = loadingEndTime - loadingStartTime
-      console.log(`Loading time: ${loadingTime} ms`)
-    }
-  }, [isLoading, loadingStartTime])
-
-  if (isLoading) {
-    return <CustomLoadingScreen />
-  }
 
   return (
     <SettingsProvider>

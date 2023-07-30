@@ -79,9 +79,7 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Minimal UI Kit,
-              built on the newest version of Material-UI ©, ready to be
-              customized to your style.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati nulla aliquam tempora aut libero quasi incidunt possimus iste, blanditiis laboriosam!
             </Typography>
 
             <Stack
