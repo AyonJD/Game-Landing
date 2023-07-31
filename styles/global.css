@@ -1,6 +1,16 @@
-a{
-    text-decoration: none !important;
+a {
+  text-decoration: none !important;
 }
-.not_active{
-    color: #6c757d !important;
+.not_active {
+  color: #6c757d !important;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #00ab55);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, #0069ac);
 }
