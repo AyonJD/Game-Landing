@@ -50,6 +50,7 @@ const ToolbarShadowStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
+  const router = useRouter()
   const isOffset = useOffSetTop(100)
   const { pathname } = useRouter()
   const isHome = pathname === '/'
@@ -77,16 +78,43 @@ export default function MainNavbar() {
             <Logo />
           </NextLink>
           <Box sx={{ flexGrow: 1 }} />
+
+          <Typography
+            onClick={() => router.push('/#feedback')}
+            variant="body2"
+            sx={{
+              marginRight: 2,
+              color: 'primary.main',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              fontSize: {
+                xs: '0.6rem',
+                sm: '0.7rem',
+                md: '.9rem',
+              },
+            }}
+          >
+            Feedback
+          </Typography>
+
           <ButtonAnimate>
             <Button
               variant="outlined"
               color="primary"
               href="/manual"
-              sx={{ marginRight: 2 }}
+              sx={{
+                marginRight: 2,
+                fontSize: {
+                  xs: '0.6rem',
+                  sm: '0.7rem',
+                  md: '.9rem',
+                },
+              }}
             >
               User Manual
             </Button>
           </ButtonAnimate>
+
           <ButtonAnimate>
             <Button
               variant="contained"
@@ -94,8 +122,15 @@ export default function MainNavbar() {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
+              sx={{
+                fontSize: {
+                  xs: '0.6rem',
+                  sm: '0.7rem',
+                  md: '.9rem',
+                },
+              }}
             >
-              Download APK
+              Download
             </Button>
           </ButtonAnimate>
         </Container>

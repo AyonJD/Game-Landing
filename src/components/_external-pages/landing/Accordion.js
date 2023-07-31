@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill'
 // material
 import { styled } from '@mui/material/styles'
@@ -37,24 +37,21 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function AccordionComponent() {
   const [controlled, setControlled] = useState(false)
+  const feedbackRef = useRef(null)
+
+  useEffect(() => {
+    if (window.location.hash === '#feedback') {
+      feedbackRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [])
 
   const handleChangeControlled = panel => (event, isExpanded) => {
     setControlled(isExpanded ? panel : false)
   }
 
   return (
-    <RootStyle title="Components: Accordion | Minimal-UI">
-      <Box
-        sx={{
-          pt: 6,
-          pb: 1,
-          mb: 10,
-          bgcolor: theme =>
-            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
-        }}
-      ></Box>
-
-      <Container>
+    <RootStyle>
+      <Container id="feedback" ref={feedbackRef}>
         <Block title="Frequently Asked Question">
           {MOCK_ACCORDIONS.map((item, index) => (
             <Accordion
